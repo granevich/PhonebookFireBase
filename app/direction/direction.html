@@ -1,0 +1,132 @@
+
+
+<div flex-offset="25" flex-offset-sm="0" flex-offset-xs="0">
+    <md-button ng-click="showAdvanced($event)" ng-show="$ctrl.adminpanel">Додати</md-button>
+    <md-button ng-click="redbutton=!redbutton; raisedadd($event)" ng-show="$ctrl.adminpanel">Редагувати</md-button>
+    <md-card ng-repeat="item in messages |filter:$ctrl.q">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline" ng-show="showred">{{item.name}}</span>
+                <md-input-container class="md-block" ng-hide="showred">
+                    <label>Имя</label>
+                    <input type="text" ng-model="item.name" ng-change=" messages.$save(item)" />
+                </md-input-container>
+                <span class="md-subhead" ng-show="showred">{{item.position}}</span>
+                <md-input-container class="md-block" ng-hide="showred">
+                    <label>Посада</label>
+                    <input type="text" ng-model="item.position" ng-change=" messages.$save(item)" />
+                </md-input-container>
+
+                <div layout="row" class="direction_info"  ng-show="showred" layout-sm="column"  layout-xs="column">
+                    <div layout="row" layout-padding layout-align="center center" layout-align-xs="start center"  layout-align-sm="start center" flex ng-if="item.intel">
+                        <img src="../icon/phone.png" alt=""   ><span >{{item.intel}}</span>
+                    </div>
+                    <div layout="row"  layout-padding layout-align="center center" layout-align-xs="start center"  layout-align-sm="start center" flex ng-if="item.outtel">
+                        <img src="../icon/fullphone.png" alt=""  ><span>{{item.outtel}}</span>
+                    </div>
+                    <div layout="row"  layout-padding layout-align="center center" layout-align-xs="start center"  layout-align-sm="start center" flex  ng-if="item.fax">
+                        <img src="../icon/Fax.png" alt=""   ><span>{{item.fax}}</span>
+                    </div>
+                    <div layout="row"  layout-padding layout-align="center center" layout-align-xs="start center"  layout-align-sm="start center" flex ng-if="item.email">
+                        <img src="../icon/email.png" alt="" ><span>{{item.email}}</span>
+                    </div>
+
+
+                </div>
+
+                <div layout="row" class="direction_info" ng-hide="showred">
+                    <md-input-container class="md-block">
+                        <!-- Use floating label instead of placeholder -->
+                        <label>Внутрішній телефон</label>
+                        <input ng-model="item.intel" type="text" ng-change=" messages.$save(item)">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <!-- Use floating label instead of placeholder -->
+                        <label>Зовнішній телефон</label>
+                        <input ng-model="item.outtel" type="text" ng-change=" messages.$save(item)">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <!-- Use floating label instead of placeholder -->
+                        <label>Факс</label>
+                        <input ng-model="item.fax" type="text" ng-change=" messages.$save(item)">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <!-- Use floating label instead of placeholder -->
+                        <label>Email</label>
+                        <input ng-model="item.email" type="text" ng-change=" messages.$save(item)">
+                    </md-input-container>
+                </div>
+
+
+
+
+
+                <br>
+                <div class="reseption" ng-show="showred">
+                   <div><span>Приймальня</span></div>
+                    <span>{{item.recetionname}}</span>
+                </div>
+                <div class="reseption" ng-hide="showred">
+                    <div><span>Приймальня</span></div>
+                    <md-input-container class="md-block" >
+                        <label>Имя</label>
+                        <input type="text" ng-model="item.recetionname" ng-change=" messages.$save(item)" />
+                    </md-input-container>
+                </div>
+
+                <div layout="row" class="direction_info" ng-show="showred" layout-sm="column" layout-xs="column">
+                    <div layout="row"  layout-padding layout-align="center center" layout-align-xs="start center"  layout-align-sm="start center" flex ng-if="item.reseptintel">
+                        <img src="../icon/phone.png" alt=""   > <span>{{item.reseptintel}}</span>
+                    </div>
+                    <div layout="row"  layout-padding layout-align="center center" layout-align-xs="start center"  layout-align-sm="start center" flex  ng-if="item.resepouttel">
+                        <img src="../icon/fullphone.png" alt=""  ><span>{{item.resepouttel}}</span>
+                    </div>
+                    <div layout="row"  layout-padding layout-align="center center" layout-align-xs="start center"  layout-align-sm="start center" flex  ng-if="item.receptoutfax"  >
+                        <img src="../icon/Fax.png" alt=""  ><span>{{item.receptoutfax}}</span>
+                    </div>
+
+                    <div layout="row"  layout-padding layout-align="center center" layout-align-xs="start center"  layout-align-sm="start center" flex ng-if="item.receptoutemail" >
+                        <img src="../icon/email.png" alt=""  ><span>{{item.receptoutemail}}</span>
+                    </div>
+
+
+
+
+                </div>
+                <div layout="row" class="direction_info" ng-hide="showred">
+                    <md-input-container class="md-block">
+                        <!-- Use floating label instead of placeholder -->
+                        <label>Внутрішній телефон</label>
+                        <input ng-model="item.reseptintel" type="text" ng-change=" messages.$save(item)">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <!-- Use floating label instead of placeholder -->
+                        <label>Зовнішній телефон</label>
+                        <input ng-model="item.resepouttel" type="text" ng-change=" messages.$save(item)">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <!-- Use floating label instead of placeholder -->
+                        <label>Факс</label>
+                        <input ng-model="item.receptoutfax" type="text" ng-change=" messages.$save(item)">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <!-- Use floating label instead of placeholder -->
+                        <label>Email</label>
+                        <input ng-model="item.receptoutemail" type="text"  ng-change=" messages.$save(item)">
+                    </md-input-container>
+                </div>
+            </md-card-title-text>
+            <md-card-title-media>
+                <div class="md-media-sm card-media"></div>
+            </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center" ng-show="redbutton">
+            <md-button ng-hide="showred" ng-click="showred=!showred" class="md-raised md-primary">Зберегти</md-button>
+            <md-button ng-hide="showred" ng-click="messages.$remove(item)" class="md-raised md-warn">Видалити</md-button>
+            <md-button ng-click="showred=!showred" ng-show="showred">Змінити</md-button>
+
+
+
+        </md-card-actions>
+    </md-card>
+</div>

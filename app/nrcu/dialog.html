@@ -1,0 +1,73 @@
+<!--<div ng-repeat="item in messages">{{item.name}}</div>-->
+<div layout-padding layout="column">
+    <md-input-container flex>
+        <label>Управління</label>
+        <md-select ng-model="selecteddep" ng-model-options="{trackBy: '$value.id'}">
+            <md-option  ng-value="dep" ng-repeat="dep in messages" >{{dep.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <md-input-container ng-show="selecteddep" ng-hide="ifhead">
+        <label>Відділ</label>
+        <md-select ng-model="selectedbranch" ng-change="takeval()" >
+            <md-option ng-value="branch" ng-repeat="branch in selecteddep.branches">{{ branch.name}}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <md-input-container ng-show="selectedbranch" ng-hide="ifhead || ifsubbranch "  >
+        <label>Підвідділ</label>
+        <md-select ng-model="selectedsubbranch" ng-disabled="ifhassubbranches">
+            <md-option ng-value="subbranch" ng-repeat="subbranch in selectedbranch.subbranches">{{ subbranch.name}}</md-option>
+        </md-select>
+    </md-input-container>
+
+
+    <md-switch ng-model="ifhead" aria-label="Switch 1" ng-show="selecteddep">
+       Керівництво Управління
+    </md-switch>
+    <md-switch ng-model="ifsubbranch" aria-label="Switch 1" ng-show="selectedbranch">
+       Керівництво Відділу
+    </md-switch>
+
+    <div layout="row" layout-padding flex>
+
+        <md-input-container ng-show="selectedbranch"  ng-hide="!ifhead" >
+            <label>Имя та Призвище</label>
+            <input ng-model="name" type="text">
+        </md-input-container>
+        <md-input-container ng-show="selectedbranch" ng-hide="!ifhead">
+            <label>Посада</label>
+            <input ng-model="position" type="text">
+        </md-input-container>
+    </div>
+    <div layout="row" layout-padding>
+        <md-input-container ng-show="selectedbranch"  ng-hide="!ifhead">
+            <label>Внутрішній телефон</label>
+            <input ng-model="inttel" type="text">
+        </md-input-container>
+        <md-input-container ng-show="selectedbranch"  ng-hide="!ifhead">
+            <label>Зовнішній телефон</label>
+            <input ng-model="outtel" type="text">
+        </md-input-container>
+    </div>
+    <div layout="row" layout-padding>
+        <md-input-container ng-show="selectedbranch"  ng-hide="!ifhead">
+            <label>Факс</label>
+            <input ng-model="fax" type="text">
+        </md-input-container>
+        <md-input-container ng-show="selectedbranch"  ng-hide="!ifhead">
+            <label>Email</label>
+            <input ng-model="email" type="email">
+        </md-input-container>
+    </div>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button md-autofocus ng-click="addMessage()" class="md-primary" >
+            Зберегти
+        </md-button>
+        <md-button ng-click="close()" class="md-warn">
+            Закрити
+        </md-button>
+
+    </md-dialog-actions>
+</div>

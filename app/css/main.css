@@ -1,0 +1,225 @@
+md-backdrop
+{
+    position: fixed !important;
+}
+
+md-sidenav
+{
+    position: fixed !important;
+
+    overflow: hidden !important; 
+
+    height: 1200px;
+}
+
+.direction_info
+{
+    margin: 10px 0;
+}
+.direction_info span
+{
+    line-height: 1.5;
+
+    padding: 0 15px 0 5px;
+}
+
+.reseption
+{
+    margin: 10px 0;
+}
+.reseption div
+{
+    margin: 10px 0;
+}
+.reseption div span
+{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+md-toolbar
+{
+    position: fixed;
+    z-index: 100;
+}
+
+md-sidenav
+{
+    z-index: 102;
+}
+
+.openbutton
+{
+    position: fixed;
+    z-index: 101;
+    top: 30px; 
+
+    color: white;
+}
+
+.upperwhite
+{
+    height: 100px;
+}
+
+.labelsearch
+{
+    color: white !important;
+}
+
+.md-input-focused
+{
+    color: white;
+}
+
+.toolbardemoScrollShrink .face
+{
+    width: 48px;
+    margin: 16px;
+
+    border: 1px solid #ddd; 
+    -webkit-border-radius: 48px;
+            border-radius: 48px;
+}
+
+.loader
+{
+    z-index: 10000; 
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, .99);
+}
+
+.md-subheader-inner
+{
+    color: white; 
+    background: rgba(0, 0, 255, .65);
+}
+
+.button-sheet
+{
+    position: relative;
+    z-index: 100;
+    top: -200px;
+
+    height: 300px; 
+
+    background: white;
+}
+
+.button-sheet.active
+{
+    top: 30px;
+
+    height: 200px;
+
+    -webkit-transition: .5s linear all;
+            transition: .5s linear all;
+}
+
+.button-sheet.disable
+{
+    top: -200px;
+
+    height: 200px;
+
+    -webkit-transition: .5s linear all;
+            transition: .5s linear all;
+}
+
+.open-close-sub-buttons
+{
+    z-index: 1;
+
+    height: 200px;
+
+    color: white; 
+    background: #5757fd;
+}
+
+.headers-block
+{
+    position: relative;
+    top: 150px;
+}
+.headers-block .md-button
+{
+    font-size: 12px;
+}
+
+.error.ng-hide
+{
+    position: fixed;
+    top: -25px;
+    right: 0;
+
+    width: 100%; 
+    height: 15px;
+    padding: 5px;
+
+    -webkit-transition: 1s linear all;
+            transition: 1s linear all;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: black;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    background: rgba(158, 158, 158, .2);
+}
+
+.error
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    width: 100%;
+    height: 14px;
+    padding: 5px;
+
+    -webkit-transition: 1s linear all;
+            transition: 1s linear all;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: black; 
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    background: rgba(158, 158, 158, .2);
+}
+
+.login-panel
+{
+    width: 100%;
+}
+
+.logout-panel
+{
+    width: 100%;
+}
+
+.enter-login
+{
+    cursor: pointer;
+}
+
+.transform_icon_open
+{
+    -webkit-transition: .5s linear all;
+            transition: .5s linear all; 
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+
+.transform_icon_close
+{
+    -webkit-transition: .5s linear all;
+            transition: .5s linear all; 
+    -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+            transform: rotate(0);
+}

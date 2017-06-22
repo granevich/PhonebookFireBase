@@ -1,0 +1,67 @@
+<md-container  flex="70" flex-offset="25"  flex-offset-sm="0" flex-offset-xs="0">
+    <md-button ng-click="showAdd=!showAdd" ng-show="$ctrl.adminpanel">Додати</md-button>
+    <md-button ng-click="showRed=!showRed" ng-show="$ctrl.adminpanel">Редагувати</md-button>
+    <div ng-show="showAdd"  flex="70" flex-offset="25">
+        <md-container layout="column">
+            <md-input-container >
+                <label>Мисто</label>
+                <input type="text" ng-model="AddName"  flex="100">
+            </md-input-container>
+            <md-input-container >
+                <label>Код</label>
+                <input ng-model="AddKode" flex="100">
+            </md-input-container>
+            <md-input-container >
+                <label>Довидка</label>
+                <input ng-model="AddNumber" flex="100">
+            </md-input-container>
+            <md-input-container >
+                <label>Тип</label>
+                <input ng-model="type" flex="100">
+            </md-input-container>
+            <md-button class="md-primary" ng-click="addMessage()">ADD</md-button>
+        </md-container>
+    </div>
+    <md-container >
+        <md-list flex-offset="25" flex-offset-sm="0" flex-offset-xs="0" ng-repeat="item in  messages | filter:$ctrl.q  | orderBy:'name'">
+            <md-subheader  ng-show="$first">{{item.type}}</md-subheader >
+            <md-list-item class="md-3-line" >
+                <div class="md-list-item-text" ng-show="reditem" md-whiteframe="2" layout="row" layout-padding>
+                    <div flex>
+                        <p>Назва</p>
+                        <div>{{item.name}}</div>
+                    </div>
+                  <div flex>
+                      <p>Код Міста</p>
+                      <div>{{item.kode}}</div>
+                  </div>
+                   <div flex>
+                       <p>Телефон</p>
+                       <div>{{item.tel}}</div>
+                   </div>
+
+                </div>
+                <div class="md-list-item-text" ng-hide="reditem">
+                    <md-input-container class="md-block">
+                        <label>Имя</label>
+                        <input type="text" ng-model="item.name" ng-change=" messages.$save(item)" />
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Код</label>
+                        <input type="text" ng-model="item.kode" ng-change=" messages.$save(item)" />
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Телефон</label>
+                        <input type="text" ng-model="item.tel" ng-change=" messages.$save(item)" />
+                    </md-input-container>
+
+                    <md-button ng-show="showRed" ng-click="reditem=!reditem" class="md-raised md-primary">Зберегти</md-button>
+                    <md-button ng-show="showRed" ng-click="reditem=!reditem; messages.$remove(item)" class="md-raised md-warn">Видалити</md-button>
+                </div>
+                <md-button ng-show="showRed" ng-click="reditem=!reditem">{{showred}}</md-button>
+            </md-list-item>
+        </md-list>
+    </md-container>
+
+
+</md-container>

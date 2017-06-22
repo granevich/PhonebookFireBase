@@ -1,0 +1,353 @@
+
+<div flex-offset="25" flex-offset-sm="0" flex-offset-xs="0" class="adminpanel">
+    <md-button ng-click="showAdvanced($event)" ng-show="$ctrl.adminpanel">Додати</md-button>
+    <md-button ng-click="redbutton=!redbutton;  raisedadd($event)" ng-show="$ctrl.adminpanel">Редагувати</md-button>
+</div>
+<md-content flex-offset-sm="0" flex-offset-xs="0" flex-offset="25">
+
+
+    <section ng-repeat="depart in messages | filter:$ctrl.q" >
+
+        <md-subheader class="md-primary">{{depart.name}}</md-subheader>
+        <md-list>
+            <md-list-item class="md-3-line" ng-repeat="(ide, head) in depart.head.stuff |toArray:false | filter:$ctrl.q ">
+
+
+                <div class="md-list-item-text" md-whiteframe="2" layout="column">
+                    <div layout  layout-xs="column" >
+                        <div layout="row" layout-padding flex  >
+                            <img src="../icon/person.png" alt="" style="width: 24px; height: 24px">
+                            <div ng-show="reditem">
+                                <p>Им'я Робітника</p>
+                                <div>{{head.name}}</div>
+                                <p>Посада</p>
+                                <div style="overflow: auto">{{head.position}}</div>
+                            </div>
+                            <div ng-hide="reditem" layout="column">
+                                <md-input-container>
+                                    <label>Им'я Робітника</label>
+                                    <input ng-model="head.name" type="text" >
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Посада</label>
+                                    <input ng-model="head.position" type="text" >
+                                </md-input-container>
+                            </div>
+
+                        </div>
+                        <div  flex>
+                            <div layout="row" layout-padding>
+                                <img src="../icon/phone.png" alt="" style="width: 24px; height: 24px">
+                                <div ng-show="reditem">
+                                    <p>Внутрішній телефон</p>
+                                    <div>{{head.inttel}}</div>
+                                    <p>Зовнішній телефон</p>
+                                    <div>{{head.outtel}}</div>
+                                </div>
+                                <div ng-hide="reditem" layout="column">
+                                    <md-input-container>
+                                        <label>Внутрішній телефон</label>
+                                        <input ng-model="head.inttel" type="text" >
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>Зовнішній телефон</label>
+                                        <input ng-model="head.outtel" type="text" >
+                                    </md-input-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div layout  layout-xs="column" >
+
+                        <div layout="row" layout-padding flex  ng-show="head.email || !reditem" >
+                            <img src="../icon/Fax.png" alt="" style="width: 24px; height: 24px">
+                            <div ng-show="reditem">
+                                <p>Email</p>
+                                <div>{{head.email}}</div>
+                            </div>
+                            <md-input-container ng-hide="reditem">
+                                <label>Email</label>
+                                <input ng-model="head.email" type="text" >
+                            </md-input-container>
+                        </div>
+                        <div  flex>
+                            <div layout="row" layout-padding ng-show="head.fax || !reditem">
+                                <img src="../icon/email.png" alt="" style="width: 24px; height: 24px">
+                                <div ng-show="reditem">
+                                    <p>Факс</p>
+                                    <div>{{head.fax}}</div>
+                                </div>
+                                <md-input-container ng-hide="reditem">
+                                    <label>Факс</label>
+                                    <input ng-model="head.fax" type="text" >
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div layout="column">
+                    <md-button ng-show="redbutton" ng-disabled="!reditem" ng-click="showsave=!showsave; reditem=!reditem;">{{showred}}</md-button>
+                    <md-button ng-show="showsave" ng-click="messages.$save(depart); reditem=!reditem; showsave=!showsave " class="md-raised md-primary">Зберегти</md-button>
+                    <md-button  ng-show="showsave"  ng-click="removeHead(depart, ide)" class="md-raised md-warn">Видалити</md-button>
+                </div>
+
+            </md-list-item>
+
+        </md-list>
+
+
+
+        <md-list layout-padding ng-repeat="branch in depart.branches |toArray:false | filter:$ctrl.q">
+            <h4 class="md-primary">{{branch.name}}</h4>
+            <md-list>
+                <md-list-item class="md-3-line" ng-repeat="(ide, head) in branch.head.stuff |toArray:false | filter:$ctrl.q">
+                    <div class="md-list-item-text" md-whiteframe="2" layout="column">
+                        <div layout  layout-xs="column" >
+                            <div layout="row" layout-padding flex  >
+                                <img src="../icon/person.png" alt="" style="width: 24px; height: 24px">
+                                <div ng-show="reditem">
+                                    <p>Им'я Робітника</p>
+                                    <div>{{head.name}}</div>
+                                    <p>Посада</p>
+                                    <div style="overflow: auto">{{head.position}}</div>
+                                </div>
+                                <div ng-hide="reditem" layout="column">
+                                    <md-input-container>
+                                        <label>Им'я Робітника</label>
+                                        <input ng-model="head.name" type="text" >
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>Посада</label>
+                                        <input ng-model="head.position" type="text" >
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div  flex>
+                                <div layout="row" layout-padding>
+                                    <img src="../icon/phone.png" alt="" style="width: 24px; height: 24px">
+                                    <div ng-show="reditem">
+                                        <p>Внутрішній телефон</p>
+                                        <div>{{head.inttel}}</div>
+                                        <p>Зовнішній телефон</p>
+                                        <div>{{head.outtel}}</div>
+                                    </div>
+                                    <div ng-hide="reditem" layout="column">
+                                        <md-input-container>
+                                            <label>Внутрішній телефон</label>
+                                            <input ng-model="head.inttel" type="text" >
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <label>Зовнішній телефон</label>
+                                            <input ng-model="head.outtel" type="text" >
+                                        </md-input-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div layout  layout-xs="column" >
+
+                            <div layout="row" layout-padding flex  ng-show="head.email  || !reditem"  >
+                                <img src="../icon/email.png" alt="" style="width: 24px; height: 24px">
+                                <div ng-show="reditem">
+                                    <p>Email</p>
+                                    <div>{{head.email}}</div>
+                                </div>
+                                <md-input-container ng-hide="reditem">
+                                    <label>Email</label>
+                                    <input ng-model="head.email" type="text" >
+                                </md-input-container>
+                            </div>
+                            <div  flex>
+                                <div layout="row" layout-padding ng-show="head.fax  || !reditem"  >
+                                    <img src="../icon/Fax.png" alt="" style="width: 24px; height: 24px">
+                                    <div ng-show="reditem">
+                                        <p>Факс</p>
+                                        <div>{{head.fax}}</div>
+                                    </div>
+                                    <md-input-container ng-hide="reditem">
+                                        <label>Факс</label>
+                                        <input ng-model="head.fax" type="text" >
+                                    </md-input-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div layout="column">
+                        <md-button ng-show="redbutton" ng-disabled="!reditem" ng-click="showsave=!showsave; reditem=!reditem;">{{showred}}</md-button>
+                        <md-button ng-show="showsave" ng-click="messages.$save(depart); reditem=!reditem; showsave=!showsave " class="md-raised md-primary">Зберегти</md-button>
+                        <md-button  ng-show="showsave"  ng-click="removeBranchHead(branch, ide, depart)"  class="md-raised md-warn">Видалити</md-button>
+
+                        <!--<md-button ng-show="redbutton" ng-click="remove(depart, head)">Видалити</md-button>-->
+                    </div>
+                </md-list-item>
+
+            </md-list>
+
+
+            <md-list-item class="md-3-line" ng-repeat="(ide, user) in branch.stuff |  toArray:false | filter:$ctrl.q">
+                <div class="md-list-item-text" md-whiteframe="2" layout="column">
+                        <div layout  layout-xs="column" >
+                            <div layout="row" layout-padding flex  >
+                                <img src="../icon/person.png" alt="" style="width: 24px; height: 24px">
+                                <div ng-show="reditem">
+                                    <p>Им'я Робітника</p>
+                                    <div>{{user.name}}</div>
+                                    <p>Посада</p>
+                                    <div style="overflow: auto">{{user.position}}</div>
+                                </div>
+                                <div ng-hide="reditem" layout="column">
+                                    <md-input-container>
+                                        <label>Им'я Робітника</label>
+                                        <input ng-model="user.name" type="text" >
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>Посада</label>
+                                        <input ng-model="user.position" type="text" >
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div  flex>
+                                <div layout="row" layout-padding>
+                                    <img src="../icon/phone.png" alt="" style="width: 24px; height: 24px">
+                                    <div ng-show="reditem">
+                                        <p>Внутрішній телефон</p>
+                                        <div>{{user.inttel}}</div>
+                                        <p>Зовнішній телефон</p>
+                                        <div>{{user.outtel}}</div>
+                                    </div>
+                                    <div ng-hide="reditem" layout="column">
+                                        <md-input-container>
+                                            <label>Внутрішній телефон</label>
+                                            <input ng-model="user.inttel" type="text" >
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <label>Зовнішній телефон</label>
+                                            <input ng-model="user.outtel" type="text" >
+                                        </md-input-container>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div layout  layout-xs="column" >
+                        <div layout="row" layout-padding flex  ng-show="user.email || !reditem"   >
+                            <img src="../icon/email.png" alt="" style="width: 24px; height: 24px">
+                            <div ng-show="reditem" >
+                                <p>Email</p>
+                                <div>{{user.email}}</div>
+                            </div>
+                            <md-input-container ng-hide="reditem">
+                                <label>Email</label>
+                                <input ng-model="user.email" type="text" >
+                            </md-input-container>
+                        </div>
+                            <div  flex>
+                                <div layout="row" layout-padding  ng-show="user.fax || !reditem"  >
+                                    <img src="../icon/Fax.png" alt="" style="width: 24px; height: 24px">
+                                    <div ng-show="reditem">
+                                        <p>Факс</p>
+                                        <div>{{user.fax}}</div>
+                                    </div>
+                                    <md-input-container ng-hide="reditem">
+                                        <label>Факс</label>
+                                        <input ng-model="user.fax" type="text" >
+                                    </md-input-container>
+                                </div>
+                            </div>
+                    </div>
+                    </div></div>
+                <div layout="column">
+                    <md-button ng-show="redbutton" ng-disabled="!reditem" ng-click="showsave=!showsave; reditem=!reditem;">{{showred}}</md-button>
+                    <md-button ng-show="showsave" ng-click="messages.$save(depart); reditem=!reditem; showsave=!showsave " class="md-raised md-primary">Зберегти</md-button>
+                    <md-button  ng-show="showsave"  ng-click="removeUser(branch, ide, depart)"  class="md-raised md-warn">Видалити</md-button>
+
+                    <!--<md-button ng-show="redbutton" ng-click="remove(depart, head)">Видалити</md-button>-->
+                </div>
+            </md-list-item>
+
+
+            <md-list layout-padding ng-repeat="subbranch in branch.subbranches |toArray:false | filter:$ctrl.q">
+                <h5>{{subbranch.name}}</h5>
+
+                <md-list-item class="md-3-line" ng-repeat="(ide, user) in subbranch.stuff |  toArray:false | filter:$ctrl.q">
+                    <div class="md-list-item-text" md-whiteframe="2" layout="column">
+                        <div layout  layout-xs="column" >
+                            <div layout="row" layout-padding flex  >
+                                <img src="../icon/person.png" alt="" style="width: 24px; height: 24px">
+                                <div ng-show="reditem">
+                                    <p>Им'я Робітника</p>
+                                    <div>{{user.name}}</div>
+                                    <p>Посада</p>
+                                    <div style="overflow: auto">{{user.position}}</div>
+                                </div>
+                                <div ng-hide="reditem" layout="column">
+                                    <md-input-container>
+                                        <label>Им'я Робітника</label>
+                                        <input ng-model="user.name" type="text" >
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>Посада</label>
+                                        <input ng-model="user.position" type="text" >
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div  flex>
+                                <div layout="row" layout-padding>
+                                    <img src="../icon/phone.png" alt="" style="width: 24px; height: 24px">
+                                    <div ng-show="reditem">
+                                        <p>Внутрішній телефон</p>
+                                        <div>{{user.inttel}}</div>
+                                        <p>Зовнішній телефон</p>
+                                        <div>{{user.outtel}}</div>
+                                    </div>
+                                    <div ng-hide="reditem" layout="column">
+                                        <md-input-container>
+                                            <label>Внутрішній телефон</label>
+                                            <input ng-model="user.inttel" type="text" >
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <label>Зовнішній телефон</label>
+                                            <input ng-model="user.outtel" type="text" >
+                                        </md-input-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div layout  layout-xs="column" >
+                            <div layout="row" layout-padding flex  ng-show="user.email || !reditem"   >
+                                <img src="../icon/email.png" alt="" style="width: 24px; height: 24px">
+                                <div ng-show="reditem" >
+                                    <p>Email</p>
+                                    <div>{{user.email}}</div>
+                                </div>
+                                <md-input-container ng-hide="reditem">
+                                    <label>Email</label>
+                                    <input ng-model="user.email" type="text" >
+                                </md-input-container>
+                            </div>
+                            <div  flex>
+                                <div layout="row" layout-padding  ng-show="user.fax || !reditem"  >
+                                    <img src="../icon/Fax.png" alt="" style="width: 24px; height: 24px">
+                                    <div ng-show="reditem">
+                                        <p>Факс</p>
+                                        <div>{{user.fax}}</div>
+                                    </div>
+                                    <md-input-container ng-hide="reditem">
+                                        <label>Факс</label>
+                                        <input ng-model="user.fax" type="text" >
+                                    </md-input-container>
+                                </div>
+                            </div>
+                        </div></div>
+                    <div layout="column">
+                        <md-button ng-show="redbutton" ng-disabled="!reditem" ng-click="showsave=!showsave; reditem=!reditem;">{{showred}}</md-button>
+                        <md-button ng-show="showsave" ng-click="messages.$save(depart); reditem=!reditem; showsave=!showsave " class="md-raised md-primary">Зберегти</md-button>
+                        <md-button  ng-show="showsave"  ng-click="removeSubUser(branch, ide, depart, subbranch)"  class="md-raised md-warn">Видалити</md-button>
+
+                        <!--<md-button ng-show="redbutton" ng-click="remove(depart, head)">Видалити</md-button>-->
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-list>
+    </section>
+</md-content>

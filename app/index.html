@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sampleApp">
+<head>
+    <meta charset="UTF-8">
+    <title>firebase</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+
+<!---->
+<!---->
+
+    <script src="nrcu/nrcu.js"></script>
+    <script src="direction/direction.js"></script>
+    <script src="importantPhones/phones.js"></script>
+    <script src="KodesAndServices/kodesandservices.js"></script>
+    <script src="kievKodes/kievKodes.js"></script>
+    <script src="emergencyPhones/emergencyPhones.js"></script>
+    <script src="js/toArrayFilter.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+</head>
+<!-- AngularJS -->
+
+<body ng-app="sampleApp" ng-controller="rootCtrl as parent" ng-cloak="">
+
+   <md-toolbar  flex="95 md-scroll-shrink id="up" layout="row">
+
+       <md-input-container layout="column" flex="50" flex-offset="30">
+           <label class="labelsearch">Пошук</label>
+           <input type="text" ng-model="parent.search;"  flex="50" ng-keypress="pressEnter($event)">
+
+
+       </md-input-container>
+       <md-button ng-click="parent.q=parent.search; ">Пошук</md-button>
+       <md-button ng-click="parent.search='';parent.q='' ">Очистити</md-button>
+
+      <div ng-show="false">{{parent.adminpanel = adminpanel}}</div>
+   </md-toolbar>
+
+
+   <div class="upperwhite"></div>
+<section layout="row" flex>
+    <md-sidenav md-component-id="left" class="md-sidenav-left"  md-is-locked-open="$mdMedia('min-width: 1300px')" >
+       <div layout>
+           <img src="icon/out.png" alt="" width="24" height="24" class="enter-login" ng-click="showForm = !showForm" ng-hide="showform">
+           <div ng-show="error" class="error">Невірний логін або пароль</div>
+       </div>
+
+
+        <div class="login-panel md-whiteframe-2dp" layout="column" layout-align="center center">
+            <div ng-hide="showform" ng-cloak="" layout="column" layout-align="center center">
+                <md-button ng-click="signIn()"  ng-show="showForm">
+                    Вхід</md-button>
+                <md-input-container ng-show="showForm">
+                    <label>Email</label>
+                    <input ng-model="mail" type="email">
+                </md-input-container>
+
+                <md-input-container ng-show="showForm">
+                    <label>Password</label>
+                    <input ng-model="password" type="password">
+                </md-input-container>
+            </div>
+
+        </div>
+        <div class="logout-panel md-whiteframe-2dp">
+            <div layout="row" layout-align="center center">
+                <img src="icon/user.png" alt="" ng-show="showform" width="24" height="24">
+                <div>{{user}}</div>
+                <md-button ng-click="authObj.$signOut(); showForm=false" ng-show="showform" >Вихід</md-button>
+            </div>
+        </div>
+                <div layout="column"  layout-align="center center" layout-padding>
+                    <img src="img/logo.jpg" alt="" width="157px" height="100px" >
+                </div>
+                <div layout="column" layout-align="center center" >
+                    <md-button ng-click="showSubButton(); " layout="column">
+                        <span>Номери</span>
+                        <img class="ng-class:transform_icon" src="icon/arrow.png" alt="">
+                    </md-button>
+                </div>
+
+                <div  layout="column" class="open-close-sub-buttons" >
+
+                    <md-button  href="#/important" ng-click="closePanel()">Важливі Номери </md-button>
+                    <md-button  href="#/kodes" ng-click="closePanel()">Коди та сервісы</md-button>
+                    <md-button  href="#/kievkodes" ng-click="closePanel()">Коди Київа</md-button>
+                    <md-button  href="#/emerg" ng-click="closePanel()">Аварійні телефони</md-button>
+                </div>
+
+            <div class="button-sheet" layout="column"  class='button-position' ng-class="ButtonsActive">
+                <md-button  href="#/direction" ng-click="closePanel()" ">Дирекція</md-button>
+                <md-button  href="#/nrcu" ng-click="closePanel(); " >НРКУ</md-button>
+            </div>
+
+
+
+
+
+    </md-sidenav>
+    <md-content>
+        <md-button ng-click="openLeftMenu() " class="openbutton">
+           Меню
+        </md-button>
+    </md-content>
+
+</section>
+   <div class="loader" ng-hide="closeloader" layout="row"  layout-align="center start">
+       <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+   </div>
+       <ng-view>
+
+       </ng-view>
+<script>
+
+</script>
+</body>
+</html>

@@ -2,6 +2,7 @@
 <html lang="en" ng-app="sampleApp">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>firebase</title>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -36,6 +37,7 @@
     <script src="kievKodes/kievKodes.js"></script>
     <script src="emergencyPhones/emergencyPhones.js"></script>
     <script src="js/toArrayFilter.js"></script>
+    <script src="js/themeforphone.js"></script>
     <script src="js/main.js"></script>
 
 
@@ -45,7 +47,7 @@
 
 <body ng-app="sampleApp" ng-controller="rootCtrl as parent" ng-cloak="">
 
-   <md-toolbar  flex="95 md-scroll-shrink id="up" layout="row">
+   <md-toolbar  flex="95 md-scroll-shrink" id="up"  layout="row">
 
        <md-input-container layout="column" flex="50" flex-offset="30">
            <label class="labelsearch">Пошук</label>
@@ -53,8 +55,11 @@
 
 
        </md-input-container>
-       <md-button ng-click="parent.q=parent.search; ">Пошук</md-button>
-       <md-button ng-click="parent.search='';parent.q='' ">Очистити</md-button>
+        <div layout-xs="column" layout="row">
+            <md-button ng-click="parent.q=parent.search; ">Пошук</md-button>
+            <md-button ng-click="parent.search='';parent.q='' ">Очистити</md-button>
+        </div>
+
 
       <div ng-show="false">{{parent.adminpanel = adminpanel}}</div>
    </md-toolbar>
@@ -64,7 +69,7 @@
 <section layout="row" flex>
     <md-sidenav md-component-id="left" class="md-sidenav-left"  md-is-locked-open="$mdMedia('min-width: 1300px')" >
        <div layout>
-           <img src="icon/out.png" alt="" width="24" height="24" class="enter-login" ng-click="showForm = !showForm" ng-hide="showform">
+           <img src="icon/out.png" alt="" width="35" height="35" class="enter-login" ng-click="showForm = !showForm" ng-hide="showform">
            <div ng-show="error" class="error">Невірний логін або пароль</div>
        </div>
 
@@ -93,7 +98,7 @@
             </div>
         </div>
                 <div layout="column"  layout-align="center center" layout-padding>
-                    <img src="img/logo.jpg" alt="" width="157px" height="100px" >
+                    <img src="img/logo.jpg" alt="" width="157px" height="120px" >
                 </div>
                 <div layout="column" layout-align="center center" >
                     <md-button ng-click="showSubButton(); " layout="column">

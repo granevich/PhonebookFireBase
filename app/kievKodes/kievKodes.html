@@ -1,8 +1,8 @@
 <div>
-    <md-container flex-offset="25" flex="70" flex-offset-sm="0" flex-offset-xs="0">
+    <md-container flex-offset="25" flex="100" flex-offset-sm="0" flex-offset-xs="0">
         <md-button ng-click="showAdd=!showAdd; raisedadd($event)" ng-show="$ctrl.adminpanel">Додати</md-button>
         <md-button ng-click="showRed=!showRed; raisedadd($event)" ng-show="$ctrl.adminpanel">Редагувати</md-button>
-        <div ng-show="showAdd" flex-offset="25" flex-offset-sm="0" flex-offset-xs="0"  flex="70">
+        <div ng-show="showAdd" flex-offset="25" flex-offset-sm="0" flex-offset-xs="0"  flex="100">
             <md-container layout="column" >
                 <md-input-container >
                     <label>Мисто</label>
@@ -20,7 +20,7 @@
             </md-container>
         </div>
         <md-container >
-            <md-list flex="85" flex-offset="25" flex-offset="25" flex-offset-sm="0" flex-offset-xs="0"  flex="70"  ng-repeat="item in  messages | filter:$ctrl.q | orderBy:'name'">
+            <md-list flex="100" flex-offset="25" flex-offset-sm="0" flex-offset-xs="0"  flex="70"  ng-repeat="item in  messages | filter:$ctrl.q | orderBy:'name'">
                 <md-subheader  ng-show="$first">{{item.type}}</md-subheader>
                 <md-list-item class="md-2-line">
                     <div class="md-list-item-text" ng-show="reditem" md-whiteframe="2" layout="row" layout-padding>

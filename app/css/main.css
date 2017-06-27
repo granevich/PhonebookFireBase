@@ -223,3 +223,13 @@ md-sidenav
         -ms-transform: rotate(0);
             transform: rotate(0);
 }
+
+.repeated-item
+{
+    height: 300px;
+}
+
+md-dialog
+{
+    max-width: 55%;
+}

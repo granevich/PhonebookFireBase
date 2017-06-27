@@ -1,6 +1,6 @@
 <md-container  flex="70" flex-offset="25"  flex-offset-sm="0" flex-offset-xs="0">
-    <md-button ng-click="showAdd=!showAdd" ng-show="$ctrl.adminpanel">Додати</md-button>
-    <md-button ng-click="showRed=!showRed" ng-show="$ctrl.adminpanel">Редагувати</md-button>
+    <md-button ng-click="showAdd=!showAdd;  raisedadd($event)" ng-show="$ctrl.adminpanel">Додати</md-button>
+    <md-button ng-click="showRed=!showRed;  raisedadd($event)" ng-show="$ctrl.adminpanel">Редагувати</md-button>
     <div ng-show="showAdd"  flex="70" flex-offset="25">
         <md-container layout="column">
             <md-input-container >
@@ -55,10 +55,10 @@
                         <input type="text" ng-model="item.tel" ng-change=" messages.$save(item)" />
                     </md-input-container>
 
-                    <md-button ng-show="showRed" ng-click="reditem=!reditem" class="md-raised md-primary">Зберегти</md-button>
+                    <md-button ng-show="showRed" ng-click="reditem=!reditem; redSave()" class="md-raised md-primary">Зберегти</md-button>
                     <md-button ng-show="showRed" ng-click="reditem=!reditem; messages.$remove(item)" class="md-raised md-warn">Видалити</md-button>
                 </div>
-                <md-button ng-show="showRed" ng-click="reditem=!reditem">{{showred}}</md-button>
+                <md-button ng-show="showRed" ng-click="reditem=!reditem; red=!red; raisedred($event)">Змінити</md-button>
             </md-list-item>
         </md-list>
     </md-container>

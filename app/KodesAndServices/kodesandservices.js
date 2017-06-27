@@ -3,7 +3,7 @@
  */
 var app = angular.module('kodesandservices',["ngMaterial", "firebase"]);
 
-function KodesAndServices($scope, $firebaseArray) {
+function KodesAndServices($scope, $firebaseArray, $rootScope, $location,  $anchorScroll) {
     $scope.showred = 'Редагувати';
     $scope.reditem = function () {
         $scope.showreditem = !$scope.showreditem;
@@ -12,6 +12,20 @@ function KodesAndServices($scope, $firebaseArray) {
     // $scope.red = $scope.reditem===true ? 'Редагувати':'Зберегти';
     var ref = firebase.database().ref().child("KodesAndServices");
     $scope.messages = $firebaseArray(ref);
+    $scope.messages.$loaded(
+        function(x) {
+            if(x ===  $scope.messages){
+                $rootScope.closeloader = true;
+                $location.hash('up');
+
+                // call $anchorScroll()
+                $anchorScroll();
+            }
+        },
+        function(error) {
+            console.error("Error:", error);
+        }
+    );
 
     $scope.addMessage = function() {
         $scope.messages.$add({

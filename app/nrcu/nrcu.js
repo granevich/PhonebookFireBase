@@ -6,11 +6,86 @@
  */
 var app = angular.module('nrcu',["ngMaterial", "firebase",'ngMessages', 'angular-toArrayFilter']);
 
-function nrcu($scope,$mdDialog, $firebaseArray, $rootScope,  $location,  $anchorScroll ) {
+function nrcu($scope,$mdDialog, $firebaseArray, $rootScope,  $location,  $anchorScroll, $window) {
+
+    $scope.scrollUP =1;
+
+
+    angular.element($window,$scope).bind("scroll", function() {
+        var windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+        var body = document.body, html = document.documentElement;
+        var docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
+        windowBottom = (windowHeight + window.pageYOffset) +1;
+        if (windowBottom >= docHeight) {
+            $scope.$apply(function() {
+                $scope.scrollUP=$scope.scrollUP+1;
+            });
+        }
+    });
+
+
+    $scope.OpenInNewWindow = function (ev, depart, departname, departHeadStuff) {
+
+        $mdDialog.show({
+            controller: NewWindowController,
+            templateUrl: './nrcu/newWindow.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            locals : {
+                depart : depart,
+                departname:departname,
+                departHeadStuff:departHeadStuff
+            }
+        })
+    };
+    function NewWindowController($scope, $mdDialog, $firebaseArray, depart, departname, departHeadStuff){
+        $scope.departname = departname;
+        $scope.departHeadStuff = departHeadStuff;
+        var delref = firebase.database().ref().child("Departments").child(depart);
+        $scope.mes = $firebaseArray(delref);
+        $scope.newmessages = $scope.mes ;
+    };
+
+
+    $scope.OpenInNewWindowBranch= function (ev, branchName, depart, branch) {
+        console.log(branch);
+        console.log(depart);
+        $mdDialog.show({
+            controller: NewWindowBranchController,
+            templateUrl: './nrcu/newWindowBranch.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            locals : {
+                branch:branch,
+                depart:depart,
+                branchName:branchName
+
+            }
+        })
+    };
+    function NewWindowBranchController($scope, $mdDialog, $firebaseArray,branchName, depart, branch) {
+        var delref = firebase.database().ref().child("Departments").child(depart).child('branches').child(branch);
+        $scope.mes = $firebaseArray(delref);
+        $scope.branchName = branchName
+
+    }
+
+
+
+
+
+
+
+
+
     $scope.showred = 'Редагувати';
     $scope.reditem = function () {
         $scope.showreditem = !$scope.showreditem;
     };
+
+
     function optional(item) {
         if (item) {
             return item;
@@ -187,6 +262,7 @@ function nrcu($scope,$mdDialog, $firebaseArray, $rootScope,  $location,  $anchor
 
 
 }
+
 
 app.component('nrcu',{
     templateUrl: './nrcu/nrcu.html',

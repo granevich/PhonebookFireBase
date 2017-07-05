@@ -160,5 +160,13 @@ md-sidenav{
   height: 300px;
 }
 md-dialog{
-  max-width:55%;
+  margin-top: 75px;
+  width: 650px;
+  @media screen and(max-width: 600px) {
+    max-width:80%;
+  }
+  max-width:57%;
+}
+.imgtoclick{
+  cursor: pointer;
 }

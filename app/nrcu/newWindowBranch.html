@@ -1,8 +1,168 @@
 
-<h4 class="md-primary" >{{branchName}}</h4>
-<!--{{mes}}-->
-<div ng-repeat="branch in mes ">
-    <div ng-repeat="head in branch">{{head.name}}</div>
+<h4 class="md-primary">{{branchName}}</h4>
+
+    <md-list>
+        <md-list-item  class="md-3-line" ng-repeat=" head in branchHeadStuff |toArray:false" >
+            <div class="md-list-item-text" md-whiteframe="2" layout="column">
+                <div layout  layout-xs="column" >
+                    <div layout="row" layout-padding flex  >
+                        <img src="icon/person.png" alt="" style="width: 24px; height: 24px">
+                        <div>
+                            <p>Им'я Робітника</p>
+                            <div>{{head.name}}</div>
+                            <p>Посада</p>
+                            <div style="overflow: auto">{{head.position}}</div>
+                        </div>
+                    </div>
+
+                    <div  flex>
+                        <div layout="row" layout-padding>
+                            <img src="icon/phone.png" alt="" style="width: 24px; height: 24px">
+                            <div>
+                                <p>Внутрішній телефон</p>
+                                <div>{{head.inttel}}</div>
+                                <p>Зовнішній телефон</p>
+                                <div>{{head.outtel}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div layout  layout-xs="column" >
+
+                    <div layout="row" layout-padding flex  ng-show="head.email || !reditem" >
+                        <img src="icon/Fax.png" alt="" style="width: 24px; height: 24px">
+                        <div >
+                            <p>Email</p>
+                            <div>{{head.email}}</div>
+                        </div>
+
+                    </div>
+                    <div  flex>
+                        <div layout="row" layout-padding ng-show="head.fax || !reditem">
+                            <img src="icon/email.png" alt="" style="width: 24px; height: 24px">
+                            <div >
+                                <p>Факс</p>
+                                <div>{{head.fax}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-list-item>
+    </md-list>
+
+    <md-list>
+        <md-list-item  class="md-3-line" ng-repeat="user in branchStuff |toArray:false" >
+            <div class="md-list-item-text" md-whiteframe="2" layout="column">
+                <div layout  layout-xs="column" >
+                    <div layout="row" layout-padding flex  >
+                        <img src="icon/person.png" alt="" style="width: 24px; height: 24px">
+                        <div>
+                            <p>Им'я Робітника</p>
+                            <div>{{user.name}}</div>
+                            <p>Посада</p>
+                            <div style="overflow: auto">{{user.position}}</div>
+                        </div>
 
 
-</div>
+                    </div>
+
+                    <div  flex>
+                        <div layout="row" layout-padding>
+                            <img src="icon/phone.png" alt="" style="width: 24px; height: 24px">
+                            <div>
+                                <p>Внутрішній телефон</p>
+                                <div>{{user.inttel}}</div>
+                                <p>Зовнішній телефон</p>
+                                <div>{{user.outtel}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div layout  layout-xs="column" >
+
+                    <div layout="row" layout-padding flex  ng-show="head.email || !reditem" >
+                        <img src="icon/Fax.png" alt="" style="width: 24px; height: 24px">
+                        <div >
+                            <p>Email</p>
+                            <div>{{user.email}}</div>
+                        </div>
+
+                    </div>
+                    <div  flex>
+                        <div layout="row" layout-padding ng-show="head.fax || !reditem">
+                            <img src="icon/email.png" alt="" style="width: 24px; height: 24px">
+                            <div >
+                                <p>Факс</p>
+                                <div>{{user.fax}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-list-item>
+
+    </md-list>
+<md-list>
+    <section ng-repeat="subbranch in subbranches |toArray:false" >
+        <h5>{{subbranch.name}}</h5>
+        {{}}
+        <md-list-item  class="md-3-line" ng-repeat="user in subbranch.stuff" >
+            <div class="md-list-item-text" md-whiteframe="2" layout="column">
+                <div layout  layout-xs="column" >
+                    <div layout="row" layout-padding flex  >
+                        <img src="icon/person.png" alt="" style="width: 24px; height: 24px">
+                        <div>
+                            <p>Им'я Робітника</p>
+                            <div>{{user.name}}</div>
+                            <p>Посада</p>
+                            <div style="overflow: auto">{{user.position}}</div>
+                        </div>
+
+
+                    </div>
+
+                    <div  flex>
+                        <div layout="row" layout-padding>
+                            <img src="icon/phone.png" alt="" style="width: 24px; height: 24px">
+                            <div>
+                                <p>Внутрішній телефон</p>
+                                <div>{{user.inttel}}</div>
+                                <p>Зовнішній телефон</p>
+                                <div>{{user.outtel}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div layout  layout-xs="column" >
+
+                    <div layout="row" layout-padding flex  ng-show="head.email || !reditem" >
+                        <img src="icon/Fax.png" alt="" style="width: 24px; height: 24px">
+                        <div >
+                            <p>Email</p>
+                            <div>{{user.email}}</div>
+                        </div>
+
+                    </div>
+                    <div  flex>
+                        <div layout="row" layout-padding ng-show="head.fax || !reditem">
+                            <img src="icon/email.png" alt="" style="width: 24px; height: 24px">
+                            <div >
+                                <p>Факс</p>
+                                <div>{{user.fax}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-list-item>
+    </section>
+
+
+</md-list>

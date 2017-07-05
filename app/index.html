@@ -56,8 +56,8 @@
 
        </md-input-container>
         <div layout-xs="column" layout="row">
-            <md-button ng-click="parent.q=parent.search; ">Пошук</md-button>
-            <md-button ng-click="parent.search='';parent.q='' ">Очистити</md-button>
+            <md-button ng-click="parent.q=parent.search;  ">Пошук</md-button>
+            <md-button ng-click="parent.search='';parent.q=''; watchClear() ">Очистити</md-button>
         </div>
 
 
@@ -109,15 +109,16 @@
 
                 <div  layout="column" class="open-close-sub-buttons" >
 
-                    <md-button  href="#/important" ng-click="closePanel()">Важливі Номери </md-button>
+                    <md-button  href="#/important" class="md-raised" ng-click="closePanel()">Важливі Номери </md-button>
                     <md-button  href="#/kodes" ng-click="closePanel()">Коди та сервісы</md-button>
                     <md-button  href="#/kievkodes" ng-click="closePanel()">Коди Київа</md-button>
                     <md-button  href="#/emerg" ng-click="closePanel()">Аварійні телефони</md-button>
                 </div>
 
             <div class="button-sheet" layout="column"  class='button-position' ng-class="ButtonsActive">
-                <md-button  href="#/direction" ng-click="closePanel()" ">Дирекція</md-button>
+                <md-button  href="#/direction" ng-click="closePanel()">Дирекція</md-button>
                 <md-button  href="#/nrcu" ng-click="closePanel(); " >НРКУ</md-button>
+                <md-button  href="#/#up" ng-click="closePanel(); " >Всі Номери</md-button>
             </div>
 
 

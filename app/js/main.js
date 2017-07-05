@@ -102,6 +102,17 @@ app.controller('rootCtrl', function ($scope, $rootScope, $mdSidenav, $firebaseAu
 
     }
 
+    $scope.watchClear = function () {
+        $scope.$broadcast('Clear', {
+          Clear: true
+        });
+
+
+
+
+
+    }
+
 });
 
 

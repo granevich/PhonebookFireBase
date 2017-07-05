@@ -9,7 +9,13 @@
     <section ng-repeat="depart in messages | filter:$ctrl.q | limitTo:scrollUP ">
 
 
-        <md-subheader class="md-primary"  ng-click="OpenInNewWindow($event, depart.$id, depart.name, depart.head.stuff)">{{depart.name}}</md-subheader>
+        <md-subheader class="md-primary" layout="column"   >
+            <div layout >
+                <div flex="90" layout layout-align="start center">{{depart.name}}</div>
+                <!--<img class="imgtoclick" src="../icon/open.png"  ng-click="OpenInNewWindow($event, depart.$id, depart.name, depart.head.stuff)" width="17" height="17" alt="">-->
+                <md-button flex ng-click="OpenInNewWindow($event, depart.$id, depart.name, depart.head.stuff)"><img class="imgtoclick" src="icon/open.png"  width="17" height="17" alt=""></md-button>
+            </div>
+        </md-subheader>
         <md-list>
             <md-list-item  class="md-3-line" ng-repeat="(ide, head) in depart.head.stuff  |toArray:false| filter:$ctrl.q" >
 
@@ -100,7 +106,15 @@
 
 
         <md-list layout-padding ng-repeat="branch in depart.branches |toArray:false | filter:$ctrl.q">
-            <h4 class="md-primary" ng-click="OpenInNewWindowBranch($event,branch.name, depart.$id, branch.id)">{{branch.name}}</h4>
+            <h4 class="md-primary" class="md-primary" layout="column"   >
+                <!--<img class="imgtoclick" ng-click="OpenInNewWindowBranch($event, branch.name, depart.$id, branch.id, branch.head.stuff, branch.stuff, branch.subbranches )" src="../icon/open.png"  ng-click="OpenInNewWindow($event, depart.$id, depart.name, depart.head.stuff)" width="17" height="17" alt="">-->
+
+                <div layout >
+                    <div flex="90" layout layout-align="start center">{{branch.name}}</div>
+                    <!--<img class="imgtoclick" src="../icon/open.png"  ng-click="OpenInNewWindow($event, depart.$id, depart.name, depart.head.stuff)" width="17" height="17" alt="">-->
+                    <md-button flex ng-click="OpenInNewWindowBranch($event, branch.name, depart.$id, branch.id, branch.head.stuff, branch.stuff, branch.subbranches )"><img class="imgtoclick" src="icon/open.png"  width="17" height="17" alt=""></md-button>
+                </div>
+            </h4>
 
             <md-list>
                 <md-list-item class="md-3-line" ng-repeat="(ide, head) in branch.head.stuff |toArray:false | filter:$ctrl.q ">
@@ -276,8 +290,18 @@
 
 
             <md-list layout-padding ng-repeat="subbranch in branch.subbranches |toArray:false | filter:$ctrl.q ">
-                <h5 >{{subbranch.name}}</h5>
 
+                <h5 class="md-primary" class="md-primary" layout="column"   >
+                    <!--<img class="imgtoclick" ng-click="OpenInNewWindowBranch($event, branch.name, depart.$id, branch.id, branch.head.stuff, branch.stuff, branch.subbranches )" src="../icon/open.png"  ng-click="OpenInNewWindow($event, depart.$id, depart.name, depart.head.stuff)" width="17" height="17" alt="">-->
+
+                    <div layout >
+                        <div flex="90" layout layout-align="start center">{{subbranch.name}}</div>
+                        <!--<img class="imgtoclick" src="../icon/open.png"  ng-click="OpenInNewWindow($event, depart.$id, depart.name, depart.head.stuff)" width="17" height="17" alt="">-->
+                        <md-button flex ng-click="OpenInNewWindowSubBranch($event, subbranch.name, subbranch.stuff)"><img class="imgtoclick" src="icon/open.png"  width="17" height="17" alt=""></md-button>
+                    </div>
+                </h5>
+
+                <!--$event, subbranch.name, subbranch.stuff-->
                 <md-list-item class="md-3-line" ng-repeat="(ide, user) in subbranch.stuff |  toArray:false | filter:$ctrl.q  ">
 
                     <div class="md-list-item-text" md-whiteframe="2" layout="column">

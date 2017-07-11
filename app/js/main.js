@@ -39,10 +39,10 @@ app.controller('rootCtrl', function ($scope, $rootScope, $mdSidenav, $firebaseAu
     $scope.signIn = function () {
 
         $scope.authObj.$signInWithEmailAndPassword($scope.mail, $scope.password).then(function(firebaseUser) {
-            console.log("Signed in as:", firebaseUser.uid);
+
 
         }).catch(function(error) {
-            console.error("Authentication failed:", error);
+
             $scope.error = true;
             $timeout(function () {
                 $scope.error = false;
@@ -51,7 +51,7 @@ app.controller('rootCtrl', function ($scope, $rootScope, $mdSidenav, $firebaseAu
     };
     $scope.authObj.$onAuthStateChanged(function(firebaseUser) {
         if (firebaseUser) {
-            console.log("Signed in as:", firebaseUser.uid);
+
             $scope.adminpanel= true;
             $scope.user = firebaseUser.email;
             $scope.showform = true;
@@ -62,16 +62,25 @@ app.controller('rootCtrl', function ($scope, $rootScope, $mdSidenav, $firebaseAu
             $scope.showform = false;
             $scope.adminpanel= false;
             $scope.showRedButtons = false;
-            console.log("Signed out");
+
         }
     });
 
 
 
 
-    $scope.closePanel = function () {
+    $scope.activeButton = '';
+    $scope.closePanel = function (ev) {
         $mdSidenav('left').toggle();
+        var elem =  document.getElementsByClassName('activeButtonPrimary');
+        angular.element(elem).removeClass('md-primary md-raised activeButtonPrimary');
+        angular.element(event.target).addClass('md-primary md-raised activeButtonPrimary');
+
+
+
     };
+
+
     $scope.openLeftMenu = function() {
         $mdSidenav('left').toggle();
     };
@@ -96,22 +105,28 @@ app.controller('rootCtrl', function ($scope, $rootScope, $mdSidenav, $firebaseAu
 
     $scope.pressEnter = function (event) {
         if (event.which === 13){
-          console.log($scope.parent.search);
+
             $scope.parent.q = $scope.parent.search;
+            $scope.$broadcast('more', {
+                more: true
+            });
+
         }
 
+    };
+    $scope.search = function () {
+        $scope.$broadcast('more', {
+            more: true
+        })
     }
 
     $scope.watchClear = function () {
         $scope.$broadcast('Clear', {
           Clear: true
         });
-
-
-
-
-
     }
+
+
 
 });
 

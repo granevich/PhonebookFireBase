@@ -247,3 +247,9 @@ md-dialog
 {
     cursor: pointer;
 }
+
+md-input-container.md-default-theme .md-input,
+md-input-container .md-input
+{
+    border-color: rgba(255, 255, 255, .28);
+}

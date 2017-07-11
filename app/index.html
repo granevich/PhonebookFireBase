@@ -51,12 +51,12 @@
 
        <md-input-container layout="column" flex="50" flex-offset="30">
            <label class="labelsearch">Пошук</label>
-           <input type="text" ng-model="parent.search;"  flex="50" ng-keypress="pressEnter($event)">
+           <input type="text" ng-model="parent.search;"   flex="50" ng-keypress="pressEnter($event)">
 
 
        </md-input-container>
         <div layout-xs="column" layout="row">
-            <md-button ng-click="parent.q=parent.search;  ">Пошук</md-button>
+            <md-button ng-click="parent.q=parent.search; search() ">Пошук</md-button>
             <md-button ng-click="parent.search='';parent.q=''; watchClear() ">Очистити</md-button>
         </div>
 
@@ -109,16 +109,16 @@
 
                 <div  layout="column" class="open-close-sub-buttons" >
 
-                    <md-button  href="#/important" class="md-raised" ng-click="closePanel()">Важливі Номери </md-button>
-                    <md-button  href="#/kodes" ng-click="closePanel()">Коди та сервісы</md-button>
-                    <md-button  href="#/kievkodes" ng-click="closePanel()">Коди Київа</md-button>
-                    <md-button  href="#/emerg" ng-click="closePanel()">Аварійні телефони</md-button>
+                    <md-button  href="#/important" ng-class="activeButton" ng-click="closePanel($event)">Важливі Номери </md-button>
+                    <md-button  href="#/kodes" ng-class="activeButton" ng-click="closePanel($event)">Коди та сервісы</md-button>
+                    <md-button  href="#/kievkodes" ng-class="activeButton" ng-click="closePanel($event)">Коди Київа</md-button>
+                    <md-button  href="#/emerg" ng-class="activeButton" ng-click="closePanel($event)">Аварійні телефони</md-button>
                 </div>
 
             <div class="button-sheet" layout="column"  class='button-position' ng-class="ButtonsActive">
-                <md-button  href="#/direction" ng-click="closePanel()">Дирекція</md-button>
-                <md-button  href="#/nrcu" ng-click="closePanel(); " >НРКУ</md-button>
-                <md-button  href="#/#up" ng-click="closePanel(); " >Всі Номери</md-button>
+                <md-button  href="#/direction"  ng-class="activeButton" ng-click="closePanel($event)">Дирекція</md-button>
+                <md-button  href="#/nrcu" ng-class="activeButton" ng-click="closePanel($event) " >НРКУ</md-button>
+                <md-button  href="#/#up" ng-class="activeButton" ng-click="closePanel($event)" >Всі Номери</md-button>
             </div>
 
 

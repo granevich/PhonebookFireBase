@@ -14,7 +14,14 @@ function nrcu($scope, $mdDialog, $firebaseArray, $rootScope,  $location,  $ancho
             $scope.scrollUP =1;
         }
 
-        console.log(data); // Данные, которые нам прислали
+
+    });
+    $scope.$on('more', function (event, data) {
+        if (data.more === true) {
+            $scope.scrollUP =100;
+        }
+
+
     });
 
 

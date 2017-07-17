@@ -27,3 +27,4 @@ app.controller('myCtrl', function($scope, $mdTheming) {
         removeFunction(); // COMPLETELY removes the browser color
     })
 });
+// var app=angular.module("theme",["ngMaterial"]).config(function(e){e.theme("default").primaryPalette("pink").accentPalette("orange")});app.config(function(e){e.enableBrowserColor({theme:"myTheme",palette:"accent",hue:"200"})}),app.controller("myCtrl",function(e,t){var a=t.setBrowserColor({theme:"myTheme",palette:"accent",hue:"200"});e.$on("$destroy",function(){a()})});

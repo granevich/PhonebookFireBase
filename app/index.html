@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>firebase</title>
+    <title>Телефонна база Українського Радіо</title>
+    <link rel="icon" type="image/png" href="favicon.ico" />
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <!--<link rel="stylesheet" href="css/main.css">-->
 
 
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"  ></script>
     <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js" ></script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
 
 
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js" ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"  ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"  ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"  ></script>
 
     <!-- Angular Material Library -->
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
@@ -30,16 +30,282 @@
 <!---->
 <!---->
 
-    <script src="nrcu/nrcu.js"></script>
-    <script src="direction/direction.js"></script>
-    <script src="importantPhones/phones.js"></script>
-    <script src="KodesAndServices/kodesandservices.js"></script>
-    <script src="kievKodes/kievKodes.js"></script>
-    <script src="emergencyPhones/emergencyPhones.js"></script>
-    <script src="js/toArrayFilter.js"></script>
-    <script src="js/themeforphone.js"></script>
-    <script src="js/main.js"></script>
+    <script src="nrcu/nrcu.js"  ></script>
+    <script src="direction/direction.js"  ></script>
+    <script src="importantPhones/phones.js"  ></script>
+    <script src="KodesAndServices/kodesandservices.js"  ></script>
+    <script src="kievKodes/kievKodes.js"  ></script>
+    <script src="emergencyPhones/emergencyPhones.js"  ></script>
+    <script src="js/toArrayFilter.js"  ></script>
+    <script src="js/themeforphone.js"  ></script>
+    <script src="all/all.js"  ></script>
 
+    <script src="js/main.js"  ></script>
+    <style>
+
+
+        md-backdrop
+        {
+            position: fixed !important;
+        }
+
+        md-sidenav
+        {
+            position: fixed !important;
+
+            overflow: hidden !important;
+
+            height: 1200px;
+        }
+
+        .direction_info
+        {
+            margin: 10px 0;
+        }
+        .direction_info span
+        {
+            line-height: 1.5;
+
+            padding: 0 15px 0 5px;
+        }
+
+        .reseption
+        {
+            margin: 10px 0;
+        }
+        .reseption div
+        {
+            margin: 10px 0;
+        }
+        .reseption div span
+        {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        md-toolbar
+        {
+            position: fixed;
+            z-index: 100;
+        }
+
+        md-sidenav
+        {
+            z-index: 102;
+        }
+
+        .openbutton
+        {
+            position: fixed;
+            z-index: 101;
+            top: 30px;
+
+            color: white;
+        }
+
+        .upperwhite
+        {
+            height: 100px;
+        }
+
+        .labelsearch
+        {
+            color: white !important;
+        }
+
+        .md-input-focused
+        {
+            color: white;
+        }
+
+        .toolbardemoScrollShrink .face
+        {
+            width: 48px;
+            margin: 16px;
+
+            border: 1px solid #ddd;
+            -webkit-border-radius: 48px;
+            border-radius: 48px;
+        }
+
+        .loader
+        {
+            z-index: 10000;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(255, 255, 255, .99);
+        }
+
+        .md-subheader-inner
+        {
+            color: white;
+            background: rgba(0, 0, 255, .65);
+        }
+
+        .button-sheet
+        {
+            position: relative;
+            z-index: 100;
+            top: -200px;
+
+            height: 300px;
+
+            background: white;
+        }
+
+        .button-sheet.active
+        {
+            top: 30px;
+
+            height: 200px;
+
+            -webkit-transition: .5s linear all;
+            transition: .5s linear all;
+        }
+
+        .button-sheet.disable
+        {
+            top: -200px;
+
+            height: 200px;
+
+            -webkit-transition: .5s linear all;
+            transition: .5s linear all;
+        }
+
+        .open-close-sub-buttons
+        {
+            z-index: 1;
+
+            height: 200px;
+
+            color: white;
+            background: #5757fd;
+        }
+
+        .headers-block
+        {
+            position: relative;
+            top: 150px;
+        }
+        .headers-block .md-button
+        {
+            font-size: 12px;
+        }
+
+        .error.ng-hide
+        {
+            position: fixed;
+            top: -25px;
+            right: 0;
+
+            width: 100%;
+            height: 15px;
+            padding: 5px;
+
+            -webkit-transition: 1s linear all;
+            transition: 1s linear all;
+            text-align: center;
+            text-transform: uppercase;
+
+            color: black;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            background: rgba(158, 158, 158, .2);
+        }
+
+        .error
+        {
+            position: fixed;
+            top: 0;
+            right: 0;
+
+            width: 100%;
+            height: 14px;
+            padding: 5px;
+
+            -webkit-transition: 1s linear all;
+            transition: 1s linear all;
+            text-align: center;
+            text-transform: uppercase;
+
+            color: black;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            background: rgba(158, 158, 158, .2);
+        }
+
+        .login-panel
+        {
+            width: 100%;
+        }
+
+        .logout-panel
+        {
+            width: 100%;
+        }
+
+        .enter-login
+        {
+            cursor: pointer;
+        }
+
+        .transform_icon_open
+        {
+            -webkit-transition: .5s linear all;
+            transition: .5s linear all;
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        .transform_icon_close
+        {
+            -webkit-transition: .5s linear all;
+            transition: .5s linear all;
+            -webkit-transform: rotate(0);
+            -ms-transform: rotate(0);
+            transform: rotate(0);
+        }
+
+        .repeated-item
+        {
+            height: 300px;
+        }
+
+        md-dialog
+        {
+            width: 650px;
+            max-width: 57%;
+            margin-top: 75px;
+        }
+        @media screen and (max-width: 600px)
+        {
+            md-dialog
+            {
+                max-width: 80%;
+            }
+        }
+
+        .imgtoclick
+        {
+            cursor: pointer;
+        }
+
+        md-input-container.md-default-theme .md-input,
+        md-input-container .md-input
+        {
+            border-color: rgba(255, 255, 255, .28);
+        }
+        .up{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+
+    </style>
 
 
 </head>
@@ -47,7 +313,7 @@
 
 <body ng-app="sampleApp" ng-controller="rootCtrl as parent" ng-cloak="">
 
-   <md-toolbar  flex="95 md-scroll-shrink" id="up"  layout="row">
+   <md-toolbar  flex="95 md-scroll-shrink" id="upbut"  layout="row">
 
        <md-input-container layout="column" flex="50" flex-offset="30">
            <label class="labelsearch">Пошук</label>
@@ -139,8 +405,11 @@
        <ng-view>
 
        </ng-view>
+   <md-button aria-label="go_to_top" onclick="topFunction()" id="myBtn" title="Go to top" style="display: none" class="up"><img src="icon/up.png" alt=""></md-button>
 <script>
 
 </script>
 </body>
+
+
 </html>

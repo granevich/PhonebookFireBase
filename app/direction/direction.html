@@ -2,7 +2,7 @@
 <div flex-offset="25" flex-offset-sm="0" flex-offset-xs="0">
     <md-button ng-click="showAdvanced($event)" ng-show="$ctrl.adminpanel">Додати</md-button>
     <md-button ng-click="redbutton=!redbutton; raisedadd($event)" ng-show="$ctrl.adminpanel">Редагувати</md-button>
-    <md-card ng-repeat="item in messages |filter:$ctrl.q">
+    <md-card ng-repeat="item in messages |filter:$ctrl.q| orderBy:'order' ">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline" ng-show="showred">{{item.name}}</span>

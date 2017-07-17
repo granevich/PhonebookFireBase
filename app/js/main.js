@@ -1,6 +1,6 @@
 
 
-var app = angular.module("sampleApp", ['ngRoute','importantphones', 'kodesandservices','kievkodes','emergencyphones','direction', 'nrcu', "firebase"]);
+var app = angular.module("sampleApp", ['ngRoute','importantphones', 'kodesandservices','kievkodes','emergencyphones','direction', 'nrcu', 'all', "firebase"]);
 app.config(function($routeProvider) {
     $routeProvider
         .when("/", {
@@ -33,7 +33,9 @@ app.config(['$locationProvider', function($locationProvider) {
     $locationProvider.hashPrefix('');
 }]);
 
-app.controller('rootCtrl', function ($scope, $rootScope, $mdSidenav, $firebaseAuth, $timeout) {
+
+
+app.controller('rootCtrl', function ($scope, $rootScope, $mdSidenav, $firebaseAuth, $timeout, $window, $location, $anchorScroll) {
     $scope.authObj = $firebaseAuth();
 
     $scope.signIn = function () {
@@ -118,16 +120,37 @@ app.controller('rootCtrl', function ($scope, $rootScope, $mdSidenav, $firebaseAu
         $scope.$broadcast('more', {
             more: true
         })
-    }
+    };
 
     $scope.watchClear = function () {
         $scope.$broadcast('Clear', {
           Clear: true
         });
-    }
+    };
+
+
+
 
 
 
 });
 
+///
+window.onscroll = function() {scrollFunction()};
+setTimeout( scrollFunction, 1000);
+
+
+function scrollFunction() {
+    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Chrome, Safari and Opera
+    document.documentElement.scrollTop = 0; // For IE and Firefox
+}
 

@@ -111,8 +111,7 @@ function nrcu($scope, $mdDialog, $firebaseArray, $rootScope,  $location,  $ancho
         // $scope.mes = $firebaseArray(delref);
         $scope.subbranchName= subbranchName;
         $scope.subbranchStuff= subbranchStuff;
-        console.log( $scope.subbranchName);
-        console.log($scope.subbranchStuff)
+
 
     }
 
